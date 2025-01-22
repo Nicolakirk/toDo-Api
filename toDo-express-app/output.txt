@@ -1,0 +1,18 @@
+You are now connected to database "to_do" as user "nicola.kirk".
+            List of relations
+ Schema |   Name    | Type  |    Owner    
+--------+-----------+-------+-------------
+ public | comments  | table | nicola.kirk
+ public | todoitems | table | nicola.kirk
+(2 rows)
+
+ todo_id |      name      |                       description                        | status | created_at 
+---------+----------------+----------------------------------------------------------+--------+------------
+       1 | Organise items |  Organise lots of things 1. first things, 2nd thing .... | to do  | 
+       2 | Make calls     |  Lots of info about making calls ....                    | to do  | 
+       3 | shopping       |  Lots of shopping info, things to buy - apples, bread.   | doing  | 
+       4 | Write code     | Write some code                                          | to do  | 
+       5 | Check Emails   | Read all the emails and send replies                     | to do  | 
+       6 | Test code      | Write some tests for the code                            | to do  | 
+(6 rows)
+
