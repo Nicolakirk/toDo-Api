@@ -6,13 +6,14 @@ You are now connected to database "to_do" as user "nicola.kirk".
  public | todoitems | table | nicola.kirk
 (2 rows)
 
- todo_id |      name      |                       description                        | status | created_at 
----------+----------------+----------------------------------------------------------+--------+------------
-       1 | Organise items |  Organise lots of things 1. first things, 2nd thing .... | to do  | 
-       2 | Make calls     |  Lots of info about making calls ....                    | to do  | 
-       3 | shopping       |  Lots of shopping info, things to buy - apples, bread.   | doing  | 
-       4 | Write code     | Write some code                                          | to do  | 
-       5 | Check Emails   | Read all the emails and send replies                     | to do  | 
-       6 | Test code      | Write some tests for the code                            | to do  | 
-(6 rows)
+ todo_id |      name      |                       description                        | status |         created_at         
+---------+----------------+----------------------------------------------------------+--------+----------------------------
+       1 | Organise items |  Organise lots of things 1. first things, 2nd thing .... | to do  | 2025-01-24 13:09:26.75443
+       2 | Make calls     |  Lots of info about making calls ....                    | to do  | 2025-01-24 13:09:26.75443
+       3 | shopping       |  Lots of shopping info, things to buy - apples, bread.   | doing  | 2025-01-24 13:09:26.75443
+       4 | Write code     | Write some code                                          | to do  | 2025-01-24 13:09:26.75443
+       6 | Test code      | Write some tests for the code                            | to do  | 2025-01-24 13:09:26.75443
+       7 | ddd            | add more details                                         | to do  | 2025-01-24 13:15:55.772816
+       9 | new on e       | eee                                                      | to do  | 2025-01-24 17:00:04.658538
+(7 rows)
 

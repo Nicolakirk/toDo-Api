@@ -1,3 +1,5 @@
 \c to_do
 \dt
-select * from todoitems;
+SELECT * from todoitems
+
+-- DELETE FROM todoitems WHERE todo_id = 8;
