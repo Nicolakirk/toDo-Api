@@ -1,4 +1,4 @@
-const { fetchItems, fetchItemsById, insertItem, removeTodoById } = require("../models/items_model");
+const { fetchItems, fetchItemsById, insertItem, removeTodoById, editTodoItem } = require("../models/items_model");
 
 exports.getItems = (req, res) => {
   fetchItems()
@@ -23,10 +23,6 @@ exports.getItemsByID = (req, res, next) => {
 };
 
 exports.postItem = (req, res, next) => {
-  console.log(req.body)
-  if (Object.keys(req.body).length === 0 ){
-    return Promise.reject({ status: 400, msg: "invalid input" })
-  }
   const itemBody = req.body;
   insertItem(itemBody)
     .then((item) => {
@@ -48,3 +44,20 @@ exports.deleteTodo = (req, res, next) => {
       next(err);  // Forward error to Express error handler
     });
 };
+
+exports.patchTodoItem= (req, res, next) =>{
+          
+          const  { todo_id }= req.params;
+          const itemBody = req.body
+          console.log(todo_id, itemBody)
+       editTodoItem (todo_id, itemBody)
+    .then((item)=>{
+      
+  res.status(201).send({ item })
+})
+.catch((err)=>{
+  next( err);
+}); 
+}
+
+        

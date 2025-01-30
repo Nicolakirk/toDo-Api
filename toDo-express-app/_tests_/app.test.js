@@ -41,15 +41,14 @@ describe("GET/api/items", () => {
           expect(item).toMatchObject({
             todo_id: 1,
             name: "Organise items",
-            description:
-              " Organise lots of things 1. first things, 2nd thing ....",
+            description:" Organise lots of things 1. first things, 2nd thing ....",
             status: "to do",
           });
         });
     });
   });
 
-  fdescribe("POST /api/item_add/:item_id test ", () => {
+  describe("POST /api/item_add/:item_id test ", () => {
     test("201, post request, adds a todo item and returns the todo _item", () => {
       const inputItem = {
         name: "Write a todo lst",
@@ -72,18 +71,6 @@ describe("GET/api/items", () => {
           });
         });
     });
-    test("status 400 - responds with an error message 400 when you try to send an empty object", () => {
-    
-      const update ={};
-      console.log(update)
-          return request(app)
-          .patch("/api/item_add")
-          .send(update)
-          .expect(400)
-      .then(({ body }) => {
-       expect(body.msg).toBe("invalid input");
-        })
-  });
   });
 
   describe(". DELETE /api/todo/:todo_id", () => {
@@ -92,8 +79,33 @@ describe("GET/api/items", () => {
     });
   });
 
-  test("Status 404  not found ,when toddo id doesnt exist", () => {
+  test("Status 404  not found ,when to do id doesn't exist", () => {
     return request(app).delete("/api/todo/12").expect(404);
   });
 });
+
+describe("PATCH /api/todoItems/:todo_id request", () => {
+  test("status 200 - changes status of todo from to do to doing ", () => {
+      const update = {
+        name: "Write a todo list",
+        description: "Write a huge todo list...",
+        status: "doing",
+        created_at: expect.any(String),
+    };
+      return request(app)
+          .patch("/api/todoItems/1")
+          .send(update)
+          .expect(201)
+          .then(({ body }) => {
+             const { item } = body;
+              
+              expect(item).toMatchObject({
+                  name: "Write a todo list",
+                  description: "Write a huge todo list...",
+                  status: "doing",
+                  created_at: expect.any(String),
+              });
+          })
+      })
+    })
 

@@ -30,7 +30,7 @@ exports.insertItem = (itemBody) => {
      RETURNING *;`;
 
   return db.query(psqlQuery, [name, description, status]).then((result) => {
-    console.log(result.rows[0])
+    
     return result.rows[0];
   });
 };
@@ -53,3 +53,33 @@ exports.removeTodoById = (todo_id) => {
       return results;
     });
 };
+
+
+exports.editTodoItem = (todo_id, itemBody) => {
+       
+  const { name, description, status } = itemBody;
+
+  const psqlQuery =  `
+  UPDATE todoItems
+  SET name = $2, description = $3, status = $4
+  WHERE todo_id = $1
+  RETURNING *;`;
+  
+  const firstPsqlQuery = `SELECT * from todoItems WHERE todo_id = $1;`
+
+  if ( Object.keys(todo_id)=== 0){
+    return Promise.reject ({status:400, msg:"Bad Request"});
+  }
+  return db.query(firstPsqlQuery, [todo_id])
+  .then((results)=>{
+    if (results.rows.length === 0){
+      return Promise.reject({
+        status :404, msg: "Not found"
+      });
+    }else {return db.query(psqlQuery,[ todo_id, name,description,status] )}
+  }).then((results)=>{
+   
+    return results.rows[0]
+  
+  })
+}
